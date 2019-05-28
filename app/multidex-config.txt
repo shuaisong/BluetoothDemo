@@ -1,1 +1,2 @@
 com/reeching/bluetoothdemo/ErrorClass.class
+com/reeching/bluetoothdemo/Main3Activity.class
