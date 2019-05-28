@@ -1,1 +1,2 @@
 -keep class com.reeching.bluetoothdemo.Main3Activity
+-keep class com.reeching.bluetoothdemo.MyItemRecyclerViewAdapter

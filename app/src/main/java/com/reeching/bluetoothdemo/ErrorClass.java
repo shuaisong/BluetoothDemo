@@ -7,6 +7,6 @@ package com.reeching.bluetoothdemo;
  */
 public class ErrorClass {
     public static void error() {
-        int j = 10 / 2;
+        int j = 10 / 0;
     }
 }
