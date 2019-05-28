@@ -11,6 +11,12 @@ import android.widget.Toast;
 public class BluetoothReceiver extends BroadcastReceiver {
     private static final String TAG = BluetoothReceiver.class.getSimpleName();
 
+    private String pin = "0000";  //此处为你要连接的蓝牙设备的初始密钥，一般为1234或0000
+    private PinBlueCallBack callBack;
+    public BluetoothReceiver(){}
+    public BluetoothReceiver(PinBlueCallBack callBack) {
+        this.callBack = callBack;
+    }
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
@@ -49,10 +55,37 @@ public class BluetoothReceiver extends BroadcastReceiver {
             case BluetoothDevice.ACTION_FOUND:
                 if (addBluetooth != null) addBluetooth.addBluetooth(device);
                 Toast.makeText(context, "找到蓝牙设备" + device.getName(), Toast.LENGTH_SHORT).show();
-//                LogUtil.d("onReceive: getName" + device.getName());
-//                LogUtil.d("onReceive: " + bluetoothClass.toString());
+                break;
+            case BluetoothDevice.ACTION_PAIRING_REQUEST:
+                pinRequest();
+                break;
+            case BluetoothDevice.ACTION_BOND_STATE_CHANGED:
+                pinStatusChanged(device);
                 break;
         }
+    }
+
+    /**
+     * 配对状态改变
+     *
+     * @param device
+     */
+    private void pinStatusChanged(BluetoothDevice device) {
+        switch (device.getBondState()) {
+            case BluetoothDevice.BOND_NONE:
+                callBack.onBondFail(device);
+                break;
+            case BluetoothDevice.BOND_BONDING:
+                callBack.onBonding(device);
+                break;
+            case BluetoothDevice.BOND_BONDED:
+                callBack.onBondSuccess(device);
+                break;
+        }
+    }
+
+    private void pinRequest() {
+        callBack.onBondRequest();
     }
 
     private AddBluetooth addBluetooth;
@@ -68,5 +101,6 @@ public class BluetoothReceiver extends BroadcastReceiver {
 
         void disconnectBluetooth(BluetoothDevice device);
     }
+
 }
 

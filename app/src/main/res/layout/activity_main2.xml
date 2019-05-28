@@ -1,14 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main2Activity">
 
-    <TextView
+    <Button
+        android:id="@+id/record"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:onClick="createDb"
+        android:text="record" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:onClick="createDb"
+        android:text="创建数据库" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:onClick="createTable"
+        android:text="创建数据库表" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="topic" />
+
+        <EditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="content" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="updateDb"
+        android:text="更新数据库表版本" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="insertData"
+        android:text="插入数据" />
+
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="text"
-        android:textSize="34sp" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="updataData"
+        android:text="更新数据" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="deleteData"
+        android:text="删除数据" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:onClick="showData"
+        android:text="显示数据" />
+
+</LinearLayout>

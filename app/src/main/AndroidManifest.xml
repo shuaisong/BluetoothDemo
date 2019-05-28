@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.reeching.bluetoothdemo">
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:name=".APP"
         android:allowBackup="true"
@@ -13,13 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"   android:configChanges="screenSize|keyboardHidden|orientation"
-     >
+        <activity android:name=".Main3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation">
+
         </activity>
 
         <receiver
@@ -35,10 +43,12 @@
                 <action android:name="android.bluetooth.device.action.ACTION_DISCOVERY_STARTED" />
                 <action android:name="android.bluetooth.device.action.ACTION_DISCOVERY_FINISHED" />
                 <action android:name="android.bluetooth.device.action.ACTION_FOUND" />
+                <action android:name="android.bluetooth.device.action.ACTION_PAIRING_REQUEST" />
+                <action android:name="android.bluetooth.device.action.ACTION_BOND_STATE_CHANGED" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
     </application>
 
 </manifest>
